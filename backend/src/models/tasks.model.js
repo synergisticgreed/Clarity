@@ -7,8 +7,12 @@ const taskSchema = new Schema(
             required :[true,"describe your task"],
         },
         duedate:{
-            type:String,
+            type:Date,
         },
+        done:{
+            type:Boolean,
+            default:false
+        }
         
     },
     {
@@ -16,4 +20,4 @@ const taskSchema = new Schema(
     }
 )
 
-export const Tasks = new mongoose.model('Tasks',taskSchema);
+export const Tasks = mongoose.model('Tasks',taskSchema);
