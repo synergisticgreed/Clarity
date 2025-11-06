@@ -24,7 +24,17 @@ const createTask = asyncHandler(async(req,res)=>{
 })
 
 const markTaskDone = asyncHandler(async(req,res)=>{
-    
+    //destructing the req.body
+    const {id} = req.params;
+    const updated = await Tasks.findByIdAndUpdate(id,{done:true},{new:true});
+    if(!updated){
+        throw new APIError(404,"could not find this task ")
+    }
+    return res
+    .status(200)
+    .json(
+        new APIResponse(200,updated,"task has been tick marked done")
+    );
 })
 
 export {createTask , markTaskDone}
