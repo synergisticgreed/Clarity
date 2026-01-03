@@ -1,8 +1,8 @@
 import { Tasks } from "../models/tasks.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { APIError } from "../utils/APIError.js";
-import { APIResponse } from "../utils/APIRespnse.js";
-import {uploadOnCloudinary} from "./utils/cloudinary.js"
+import { APIResponse } from "../utils/APIResponse.js";
+import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 

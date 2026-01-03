@@ -1,8 +1,8 @@
-import { asyncHandler } from "../utils/asyncHandler";
-import { APIError } from "../utils/APIError";
-import { APIResponse } from "../utils/APIRespnse";
-import {User} from "./models/user.model.js"
-import {uploadOnCloudinary} from "./utils/cloudinary.js"
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { APIError } from "../utils/APIError.js";
+import { APIResponse } from "../utils/APIResponse.js";
+import User from "../models/user.model.js"
+import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 // import dotenv from 'dotenc';//abhi install nahi kiya hai 
@@ -65,11 +65,12 @@ const registerUser = asyncHandler(async(requestAnimationFrame,res)=>{
 
     //check for files 
     console.log(req.files);
-    const avatarLocalPath = req.files?avatar[0]?.path;
+    
+    const avatarLocalPath = req.files?.avatar[0]?.path ;
     
     if(!avatarLocalPath){
-        throw new APIError(400);
-    }
+        throw new APIError(400,"no file uploaded ");
+    } 
 
     const avatar = await uploadOnCloudinary(avatarLocalPath)
     if(!avatar){
